@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string>
 
-#include "hirediscluter.h"
+#include "hirediscluster.h"
 #include "connconfig.h"
 
 using namespace rediscluster;

@@ -78,7 +78,7 @@ namespace rediscluster {
         return s;
       }
 
-    private:
+    protected:
       std::string m_host;
       int m_port;
       double m_timeout;
