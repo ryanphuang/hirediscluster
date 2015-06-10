@@ -18,7 +18,7 @@
 #include "rediscutil.h"
 
 #define CLUSTER_SLOTS_CMD    "CLUSTER SLOTS"
-#define DEBUG_SLOT
+// #define DEBUG_SLOT
 
 namespace rediscluster {
 
