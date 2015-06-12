@@ -9,8 +9,6 @@ using namespace rediscluster;
 using namespace std;
 
 // a comma separated list of hosts in the cluster
-const char * CLUSTER = "localhost";
-const int PORT = 7777;
 const double TIMEOUT = 1.5;
 
 void write(RedisCluster *client, const char *key, uint32_t keylen, 
@@ -41,11 +39,16 @@ int read(RedisCluster *client, const char *key, uint32_t keylen,
   return rd;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
+  if (argc != 3) {
+    fprintf(stderr, "Usage: %s CLUSTER PORT\n", argv[0]);
+    exit(1);
+  }
+  int port = atoi(argv[2]);
   RedisCluster client;
-  ConnectionConfig config("", PORT); // use an empty host first;
-  config.setCluster(CLUSTER).setTimeout(TIMEOUT); // set cluster and timeout
+  ConnectionConfig config("", port); // use an empty host first;
+  config.setCluster(argv[1]).setTimeout(TIMEOUT); // set cluster and timeout
   if (!client.init(&config)) {
     fprintf(stderr, "fail to initialize redis cluster\n");
     exit(1);
